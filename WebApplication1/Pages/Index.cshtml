@@ -1,0 +1,26 @@
+﻿@page
+@using System.Web;
+@model WebApplication1.Pages.IndexModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Decoder/Encoder</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<h2>Decoder/Encoder</h2>
+	<form action="/Index" method="post">
+		<textarea name="text" cols="40" rows="3">@Model.Text</textarea>
+		<br>
+		<input type="text" name="key" value="@Model.Key" />
+		<input type="submit" name="action" value="encode" />
+		<input type="submit" name="action" value="decode" />
+	</form>
+
+	@if (!string.IsNullOrEmpty(Model.Text))
+	{
+		<h3>Result:</h3>
+		<p>@Html.Raw(Model.Result.Replace("\n", "<br>"))</p>
+	}
+</body>
+</html>
